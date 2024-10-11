@@ -1,0 +1,304 @@
+/* styles.css */
+
+/* =========================================
+   1. Reset and Base Styles
+   ========================================= */
+
+/* Reset some default styles for consistency across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #5b502539, #fdfdfd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* =========================================
+   2. Recipe Card Layout
+   ========================================= */
+
+   .recipe-card {
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Existing styles */
+    background-color: rgba(255, 255, 255, 0.9); /* Optional: Slight transparency */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    position: relative;
+    z-index: 1; /* Ensure it's above any background layers */
+    overflow: hidden;
+}
+
+.recipe-title {
+    text-align: center;
+    color: #d35400;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.recipe-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.recipe-image:hover {
+    transform: scale(1.05);
+}
+
+.recipe-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.recipe-info div {
+    flex: 1;
+}
+
+.recipe-info div:not(:last-child) {
+    margin-right: 10px;
+}
+
+/* =========================================
+   3. Buttons Styling
+   ========================================= */
+
+.toggle-btn, .start-btn, .next-btn, .print-btn {
+    background-color: #d35400;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+}
+
+.toggle-btn:hover, .start-btn:hover, .next-btn:hover, .print-btn:hover {
+    background-color: #e67e22;
+}
+
+.toggle-btn:active, .start-btn:active, .next-btn:active, .print-btn:active {
+    transform: scale(0.98);
+}
+
+.start-btn {
+    background-color: #27ae60;
+}
+
+.start-btn:hover {
+    background-color: #2ecc71;
+}
+
+.next-btn {
+    background-color: #2980b9;
+}
+
+.next-btn:hover {
+    background-color: #3498db;
+}
+
+.print-btn {
+    background-color: #2980b9;
+}
+
+.print-btn:hover {
+    background-color: #3498db;
+}
+
+/* Hide the Next button initially */
+.next-btn.hidden {
+    display: none;
+}
+
+/* =========================================
+   4. Ingredients and Steps Lists
+   ========================================= */
+
+.ingredients, .steps {
+    list-style: none;
+    margin-bottom: 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.ingredients.show, .steps.show {
+    max-height: 1000px; /* Large enough to display content */
+}
+
+.ingredients li, .steps li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ecf0f1;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    cursor: pointer;
+}
+
+.ingredients li:hover, .steps li:hover {
+    color: #d35400;
+    text-decoration: underline;
+}
+
+/* Highlighted step */
+.current-step {
+    background-color: #f1c40f;
+    color: #ffffff;
+    animation: highlight 0.5s ease-in-out;
+}
+
+/* Step Highlight Animation */
+@keyframes highlight {
+    from { background-color: #f1c40f; }
+    to { background-color: #d35400; }
+}
+
+/* =========================================
+   5. Progress Bar
+   ========================================= */
+
+.progress-bar-container {
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    background-color: #d35400;
+    width: 0%;
+    height: 100%;
+    transition: width 1s ease-in-out;
+}
+
+/* =========================================
+   6. Timer Styling
+   ========================================= */
+
+.timer-container {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #27ae60;
+    text-align: center;
+}
+
+.timer-container.hidden {
+    display: none;
+}
+
+.timer {
+    font-weight: bold;
+}
+
+/* =========================================
+   7. Responsive Design (Media Queries)
+   ========================================= */
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+    .recipe-info {
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+
+    .recipe-info div:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .toggle-btn, .start-btn, .next-btn, .print-btn {
+        width: 100%;
+    }
+
+    .recipe-title {
+        font-size: 1.5rem;
+    }
+
+    .recipe-info {
+        font-size: 1rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .recipe-card {
+        padding: 30px;
+    }
+
+    .recipe-title {
+        font-size: 2.5rem;
+    }
+
+    .recipe-info {
+        font-size: 1.1rem;
+    }
+}
+
+/* Desktops */
+@media (min-width: 1025px) {
+    .recipe-card {
+        padding: 40px;
+    }
+
+    .recipe-title {
+        font-size: 3rem;
+    }
+
+    .recipe-info {
+        font-size: 1.2rem;
+    }
+}
+
+/* =========================================
+   8. Print-Friendly Layout
+   ========================================= */
+
+@media print {
+    body {
+        background: #ffffff;
+    }
+
+    .recipe-card {
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        padding: 0;
+    }
+
+    .toggle-btn, .start-btn, .next-btn, .print-btn, .progress-bar-container, .timer-container {
+        display: none;
+    }
+
+    .recipe-title {
+        color: #000000;
+    }
+
+    .ingredients, .steps {
+        max-height: none;
+        display: block !important;
+    }
+
+    .ingredients li, .steps li {
+        border-bottom: none;
+    }
+}

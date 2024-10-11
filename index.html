@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Recipe Card - Chocolate Cake</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="recipe-card">
+        <h1 class="recipe-title">Chocolate Cake</h1>
+        <img src="image.png" alt="Chocolate Cake" class="recipe-image">
+        
+        <div class="recipe-info">
+            <div class="prep-time">
+                <strong>Preparation Time:</strong> 1 hour
+            </div>
+            <div class="servings">
+                <strong>Servings:</strong> 8
+            </div>
+        </div>
+        
+        <button id="toggle-ingredients" class="toggle-btn">Show Ingredients</button>
+        <ul class="ingredients hidden">
+            <li>2 cups all-purpose flour</li>
+            <li>2 cups sugar</li>
+            <li>3/4 cup cocoa powder</li>
+            <li>1.5 tsp baking powder</li>
+            <li>1.5 tsp baking soda</li>
+            <li>1 tsp salt</li>
+            <li>2 eggs</li>
+            <li>1 cup milk</li>
+            <li>1/2 cup vegetable oil</li>
+            <li>2 tsp vanilla extract</li>
+            <li>1 cup boiling water</li>
+        </ul>
+        
+        <button id="toggle-steps" class="toggle-btn">Show Steps</button>
+        <ol class="steps hidden">
+            <li>Preheat your oven to 350°F (175°C).</li>
+            <li>Grease and flour two 9-inch round baking pans.</li>
+            <li>In a large bowl, stir together the dry ingredients.</li>
+            <li>Add eggs, milk, oil, and vanilla; beat on medium speed for 2 minutes.</li>
+            <li>Stir in boiling water (batter will be thin).</li>
+            <li>Pour batter into prepared pans.</li>
+            <li>Bake for 30-35 minutes or until a toothpick comes out clean.</li>
+            <li>Cool for 10 minutes before removing from pans.</li>
+            <li>Freeze as desired and serve.</li>
+        </ol>
+        
+        <button id="start-cooking" class="start-btn">Start Cooking</button>
+        <!-- Add after the Start Cooking button in index.html -->
+        <button id="next-step" class="next-btn hidden">Next</button>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <!-- Add after the progress bar in index.html -->
+        <div class="timer-container hidden" id="timer-container">
+            <strong>Time Remaining:</strong> <span id="timer">60:00</span>
+        </div>
+        <!-- Add before the end of the recipe-card div in index.html -->
+        <button onclick="window.print()" class="print-btn">Print Recipe</button>
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
